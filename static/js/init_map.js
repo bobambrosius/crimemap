@@ -1,6 +1,8 @@
 //window.onload = function(){ initGoogleMap(); }
 
-var map
+var map;
+var marker;
+
 initGoogleMap = function() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(getLocation);
@@ -24,4 +26,18 @@ function showMap(coords) {
 	};
 	var mapDiv = document.getElementById("map");
 	map = new google.maps.Map(mapDiv, mapOptions);
+	google.maps.event.addListener(map, 'click', function(event) {
+		placeMarker(event.latLng);
+	});
+}
+
+function placeMarker(location) {
+	if (marker) {
+		marker.setPosition(location);
+	} else {
+		marker = new google.maps.Marker({
+			position: location,
+			map: map
+		});
+	}
 }
