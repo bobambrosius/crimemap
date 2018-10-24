@@ -4,7 +4,9 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 DB = DBHelper()
 
-# AIzaSyA17UDYaEXt3fAcpRi-VpXRXWd2QD9cQxw
+@app.route("/loc")
+def loc():
+    return render_template("xmyloc.html")
 
 @app.route("/")
 def home():
@@ -31,7 +33,7 @@ def clear():
     except Exception as e:
         print(e)
     return home()
-
+ 
 if __name__ == '__main__':
     app.run(port=4141, debug=True)
     
