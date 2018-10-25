@@ -40,4 +40,6 @@ function placeMarker(location) {
 			map: map
 		});
 	}
+	document.getElementById('latitude').value = location.lat();
+	document.getElementById('longitude').value = location.lng();
 }
